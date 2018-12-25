@@ -14,6 +14,9 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class HomeActivity extends Fragment  {
     EditText et_home_search;
     Button btn_home_search;
@@ -31,16 +34,12 @@ public class HomeActivity extends Fragment  {
         initView();
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
         rv_home_list.setLayoutManager(linearLayoutManager);
-        MyAdapter adapter = new MyAdapter();
-        adapter.setOnItemClickListener(new MyAdapter.OnItemClickListener() {
+        List list = new ArrayList();
+        MyAdapter adapter = new MyAdapter(getActivity(),list);
+        adapter.setOnItemClickLitener(new MyAdapter.OnItemClickLitener() {
             @Override
             public void onItemClick(View view, int position) {
                 Toast.makeText(getActivity(), "" + position, Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onItemLongClick(View view) {
-
             }
         });
         rv_home_list.setAdapter(adapter);
