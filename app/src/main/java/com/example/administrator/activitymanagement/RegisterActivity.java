@@ -18,6 +18,6 @@ Button btn_reg_register;
         ed_reg_name=findViewById(R.id.ed_reg_name);
         ed_reg_password=findViewById(R.id.ed_reg_password);
         ed_reg_rpassword=findViewById(R.id.ed_reg_rpassword);
-        btn_reg_register=findViewById(R.id.btn_reg_register);
+
     }
 }
