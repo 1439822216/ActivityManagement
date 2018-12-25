@@ -18,7 +18,8 @@
         </activity>
         <activity android:name=".HomeActivity" />
         <activity android:name=".EditActivity" />
-        <activity android:name=".MeActivity"></activity>
+        <activity android:name=".MeActivity" />
+        <activity android:name=".LoginActivity"></activity>
     </application>
 
 </manifest>
