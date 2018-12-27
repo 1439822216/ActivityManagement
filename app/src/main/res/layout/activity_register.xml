@@ -51,6 +51,7 @@
         android:inputType="textPersonName"
         android:textColor="@android:color/background_dark"
         android:textSize="24sp"
+
         app:layout_constraintBottom_toTopOf="@+id/ed_reg_rpassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
