@@ -26,7 +26,7 @@ public class MeActivity extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         //获取user对象
-         List<UserInfo> user = (List<UserInfo>)getArguments().getSerializable("user");
-
+         UserInfo user = (UserInfo)getArguments().getSerializable("user");
+        Log.i("haha",user.toString());
     }
 }

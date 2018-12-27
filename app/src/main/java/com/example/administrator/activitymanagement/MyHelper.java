@@ -12,7 +12,7 @@ public class MyHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         String sql = "create table userInfo (uid varchar(20) primary key ,name varchar(20),telephone varchar(20),clazz varchar(20),touxiang varchar(20),username varchar(20) unique,password varchar(20))";
-        String sql1 = "create table activity(aid varchar(20) primary key ,aName varchar(20),aimageId varchar(20),aUid varchar(20),aOpenTime datetime, aEndTime datetime,aPlace varchar(30),aInfo varchar(100),aTelephone varchar(20),aNumber int(15))";
+        String sql1 = "create table activity(aid varchar(20) primary key ,aName varchar(20),aimageId varchar(20),aUid varchar(20),aOpenTime varchar(20), aEndTime varchar(20),aPlace varchar(30),aInfo varchar(100),aTelephone varchar(20),aNumber int(15))";
 
         sqLiteDatabase.execSQL(sql);
         sqLiteDatabase.execSQL(sql1);

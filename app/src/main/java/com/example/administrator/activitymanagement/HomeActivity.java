@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,7 +36,8 @@ public class HomeActivity extends Fragment  {
         super.onActivityCreated(savedInstanceState);
         initView();
         //获取user对象
-        List<UserInfo> user = (List<UserInfo>)getArguments().getSerializable("user");
+        UserInfo user = (UserInfo)getArguments().getSerializable("user");
+        Log.i("haha",user.toString());
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
         rv_home_list.setLayoutManager(linearLayoutManager);
         List list = new ArrayList();
