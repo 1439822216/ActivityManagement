@@ -42,7 +42,7 @@ public class HomeActivity extends Fragment  {
         //Log.i("haha",user.toString());
         //获取所有活动
         MySQLiteAdapter mySQLiteAdapter = new MySQLiteAdapter(getActivity());
-        List<ActivityListBean> listBeans = mySQLiteAdapter.queryActivity();
+        final List<ActivityListBean> listBeans = mySQLiteAdapter.queryActivity();
         Log.i("aaa",listBeans.toString());
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
         rv_home_list.setLayoutManager(linearLayoutManager);
@@ -52,7 +52,10 @@ public class HomeActivity extends Fragment  {
         adapter.setOnItemClickLitener(new MyAdapter.OnItemClickLitener() {
             @Override
             public void onItemClick(View view, int position) {
+                //获取点击的活动的所有信息
                 Toast.makeText(getActivity(), "" + position, Toast.LENGTH_SHORT).show();
+                ActivityListBean activityListBean = listBeans.get(position);
+                //Log.i("aaa",activityListBean.toString());
             }
         });
         rv_home_list.setAdapter(adapter);

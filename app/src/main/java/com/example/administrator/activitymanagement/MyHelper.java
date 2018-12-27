@@ -16,16 +16,16 @@ public class MyHelper extends SQLiteOpenHelper {
 
         sqLiteDatabase.execSQL(sql);
         sqLiteDatabase.execSQL(sql1);
-        sqLiteDatabase.execSQL("insert into userInfo values('E3BF64A5C21243678CDBC4C21649C954','戴俊迈','123456','移动172','1.jpg','111','123456')");
-        sqLiteDatabase.execSQL("insert into userInfo values('ADC80B549F2D4D1DB1E5315C1144F0BA','戴逸仙','123456','化学172','2.jpg','222','123456')");
-        sqLiteDatabase.execSQL("insert into userInfo values('8BB3195305814946903BBFA742D1BC49','文安然','123456','数学172','3.jpg','333','123456')");
-        sqLiteDatabase.execSQL("insert into userInfo values('0559A1CC0D8F4CDAB3F46AF80A8ACD14','董思远','123456','机器人17','4.jpg','444','123456')");
-        sqLiteDatabase.execSQL("insert into userInfo values('31F0275BBE62445681A451701826B607','范德华','123456','网站171','5.jpg','555','123456')");
-        sqLiteDatabase.execSQL("insert into userInfo values('F192C168E2594B33BF49DCB74AF10AE4','金羽彤','123456','移动172','1.jpg','666','123456')");
-        sqLiteDatabase.execSQL("insert into userInfo values('AA3326A5654747E3878E3C34429EFEAF','毛梓珊','123456','化学172','2.jpg','777','123456')");
-        sqLiteDatabase.execSQL("insert into userInfo values('F46704EE82984AF1A6DF8F25A9E5FF5C','冯山柏','123456','数学172','3.jpg','888','123456')");
-        sqLiteDatabase.execSQL("insert into userInfo values('7A661C34C4FD4E29A018B46AF2477DC7','蒋迎松','123456','机器人17','4.jpg','999','123456')");
-        sqLiteDatabase.execSQL("insert into userInfo values('42D284C4837E4830B53C5CF3E22B1A9C','乔曼妮','123456','网站171','5.jpg','110','123456')");
+        sqLiteDatabase.execSQL("insert into userInfo values('E3BF64A5C21243678CDBC4C21649C954','戴俊迈','123456','移动172','1','111','123456')");
+        sqLiteDatabase.execSQL("insert into userInfo values('ADC80B549F2D4D1DB1E5315C1144F0BA','戴逸仙','123456','化学172','2','222','123456')");
+        sqLiteDatabase.execSQL("insert into userInfo values('8BB3195305814946903BBFA742D1BC49','文安然','123456','数学172','3','333','123456')");
+        sqLiteDatabase.execSQL("insert into userInfo values('0559A1CC0D8F4CDAB3F46AF80A8ACD14','董思远','123456','机器人17','4','444','123456')");
+        sqLiteDatabase.execSQL("insert into userInfo values('31F0275BBE62445681A451701826B607','范德华','123456','网站171','5','555','123456')");
+        sqLiteDatabase.execSQL("insert into userInfo values('F192C168E2594B33BF49DCB74AF10AE4','金羽彤','123456','移动172','1','666','123456')");
+        sqLiteDatabase.execSQL("insert into userInfo values('AA3326A5654747E3878E3C34429EFEAF','毛梓珊','123456','化学172','2','777','123456')");
+        sqLiteDatabase.execSQL("insert into userInfo values('F46704EE82984AF1A6DF8F25A9E5FF5C','冯山柏','123456','数学172','3','888','123456')");
+        sqLiteDatabase.execSQL("insert into userInfo values('7A661C34C4FD4E29A018B46AF2477DC7','蒋迎松','123456','机器人17','4','999','123456')");
+        sqLiteDatabase.execSQL("insert into userInfo values('42D284C4837E4830B53C5CF3E22B1A9C','乔曼妮','123456','网站171','5','110','123456')");
         insertActivity(sqLiteDatabase);
     }
 
