@@ -4,66 +4,47 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/beijing"
+    android:background="@drawable/QQlogin"
     tools:context=".LoginActivity">
-
-    <TextView
-        android:id="@+id/tv_login_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="账号："
-        android:textColor="@android:color/background_light"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/ed_login_name"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.26999998" />
-
-    <TextView
-        android:id="@+id/tv_login_password"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="密码："
-        android:textColor="@android:color/background_light"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/ed_login_password"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.38" />
 
     <EditText
         android:id="@+id/ed_login_name"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="8dp"
+        android:background="?attr/colorBackgroundFloating"
         android:ems="10"
         android:hint="请输入账号"
         android:inputType="textPersonName"
         android:textColor="@android:color/background_light"
-        android:textSize="24sp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/tv_login_name"
+        android:textSize="36sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/tv_login_name" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.31" />
 
     <EditText
         android:id="@+id/ed_login_password"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:background="@android:color/background_light"
         android:ems="10"
         android:hint="请输入密码"
         android:inputType="textPersonName"
         android:textColor="@android:color/background_light"
-        android:textSize="24sp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/tv_login_password"
+        android:textSize="36sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/tv_login_password" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.39" />
 
     <CheckBox
         android:id="@+id/cb_login_Remember"
@@ -72,38 +53,43 @@
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
         android:text="记住密码"
-        android:textColor="@android:color/background_light"
-        android:textSize="24sp"
+        android:textColor="@android:color/background_dark"
+        android:textSize="30sp"
         app:layout_constraintBottom_toTopOf="@+id/btn_login_login"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.36"
+        app:layout_constraintHorizontal_bias="0.08"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ed_login_password"
         app:layout_constraintVertical_bias="0.158" />
 
     <Button
         android:id="@+id/btn_login_login"
-        android:layout_width="150dp"
+        android:layout_width="match_parent"
         android:layout_height="75dp"
-        android:background="@drawable/btn"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:background="@android:color/holo_blue_bright"
         android:text="登录"
         android:textSize="36sp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/btn_login_register"
-        app:layout_constraintEnd_toStartOf="@+id/btn_login_register"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.609" />
 
     <Button
         android:id="@+id/btn_login_register"
-        android:layout_width="150dp"
+        android:layout_width="match_parent"
         android:layout_height="75dp"
-        android:background="@drawable/btn"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:background="@android:color/holo_blue_bright"
         android:text="注册"
         android:textSize="36sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/btn_login_login"
-        app:layout_constraintTop_toBottomOf="@+id/ed_login_password"
-        app:layout_constraintVertical_bias="0.35000002" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.729" />
 </android.support.constraint.ConstraintLayout>
