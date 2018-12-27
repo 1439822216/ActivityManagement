@@ -13,6 +13,7 @@ Button btn_reg_register;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
         register();
+
     }
     private void register(){
         ed_reg_name=findViewById(R.id.ed_reg_name);
