@@ -4,9 +4,15 @@ import android.app.Fragment;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.example.administrator.activitymanagement.domain.UserInfo;
+
+import java.io.Serializable;
+import java.util.List;
 
 public class MeActivity extends Fragment {
 
@@ -19,5 +25,8 @@ public class MeActivity extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        //获取user对象
+         List<UserInfo> user = (List<UserInfo>)getArguments().getSerializable("user");
+
     }
 }

@@ -8,6 +8,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 
+import com.example.administrator.activitymanagement.domain.UserInfo;
+
+import java.util.List;
+
 public class EditActivity extends Fragment {
 EditText ed_edit_aName,ed_edit_aOpenTime,ed_edit_aEndTime,ed_edit_aPlace,ed_edit_aInfo;
     @Nullable
@@ -20,13 +24,17 @@ EditText ed_edit_aName,ed_edit_aOpenTime,ed_edit_aEndTime,ed_edit_aPlace,ed_edit
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-       ed_edit_aName=getActivity().findViewById(R.id.ed_edit_aName);
-       ed_edit_aOpenTime=getActivity().findViewById(R.id.ed_edit_aOpenTime);
-       ed_edit_aEndTime=getActivity().findViewById(R.id.ed_edit_aEndTime);
-       ed_edit_aPlace=getActivity().findViewById(R.id.ed_edit_aPlace);
-       ed_edit_aInfo=getActivity().findViewById(R.id.ed_edit_aInfo);
-    }
+        //获取user对象
+        List<UserInfo> user = (List<UserInfo>)getArguments().getSerializable("user");
 
+    }
+    public void initView(){
+        ed_edit_aName=getActivity().findViewById(R.id.ed_edit_aName);
+        ed_edit_aOpenTime=getActivity().findViewById(R.id.ed_edit_aOpenTime);
+        ed_edit_aEndTime=getActivity().findViewById(R.id.ed_edit_aEndTime);
+        ed_edit_aPlace=getActivity().findViewById(R.id.ed_edit_aPlace);
+        ed_edit_aInfo=getActivity().findViewById(R.id.ed_edit_aInfo);
+    }
 
 
 }
