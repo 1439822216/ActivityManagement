@@ -25,8 +25,8 @@ public class MainActivity extends AppCompatActivity {
         initView();
         Intent intent = getIntent();
         bundle = intent.getExtras();
-        List<UserInfo> user = (List<UserInfo>)bundle.getSerializable("user");
-        //Log.i("haha",user.toString());
+        UserInfo user = (UserInfo)bundle.getSerializable("user");
+        Log.i("haha",user.toString());
         HomeActivity homeActivity = new HomeActivity();
         replaceFragment(homeActivity);
         tv_main_home.setOnClickListener(l);

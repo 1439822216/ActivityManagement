@@ -3,6 +3,7 @@ package com.example.administrator.activitymanagement;
 import android.app.Fragment;
 import android.support.annotation.Nullable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,8 +26,8 @@ EditText ed_edit_aName,ed_edit_aOpenTime,ed_edit_aEndTime,ed_edit_aPlace,ed_edit
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         //获取user对象
-        List<UserInfo> user = (List<UserInfo>)getArguments().getSerializable("user");
-
+        UserInfo user = (UserInfo)getArguments().getSerializable("user");
+        Log.i("haha",user.toString());
     }
     public void initView(){
         ed_edit_aName=getActivity().findViewById(R.id.ed_edit_aName);
