@@ -83,8 +83,8 @@
 
     <Button
         android:id="@+id/btn_login_login"
-        android:layout_width="200dp"
-        android:layout_height="100dp"
+        android:layout_width="150dp"
+        android:layout_height="75dp"
         android:background="@drawable/btn"
         android:text="登录"
         android:textSize="36sp"
@@ -95,8 +95,8 @@
 
     <Button
         android:id="@+id/btn_login_register"
-        android:layout_width="200dp"
-        android:layout_height="100dp"
+        android:layout_width="150dp"
+        android:layout_height="75dp"
         android:background="@drawable/btn"
         android:text="注册"
         android:textSize="36sp"
