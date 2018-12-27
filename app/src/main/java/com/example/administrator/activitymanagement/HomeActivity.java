@@ -4,6 +4,7 @@ import android.app.Fragment;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -15,6 +16,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.example.administrator.activitymanagement.domain.ActivityListBean;
 import com.example.administrator.activitymanagement.domain.UserInfo;
 
 import java.util.ArrayList;
@@ -37,11 +39,16 @@ public class HomeActivity extends Fragment  {
         initView();
         //获取user对象
         UserInfo user = (UserInfo)getArguments().getSerializable("user");
-        Log.i("haha",user.toString());
+        //Log.i("haha",user.toString());
+        //获取所有活动
+        MySQLiteAdapter mySQLiteAdapter = new MySQLiteAdapter(getActivity());
+        List<ActivityListBean> listBeans = mySQLiteAdapter.queryActivity();
+        Log.i("aaa",listBeans.toString());
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
         rv_home_list.setLayoutManager(linearLayoutManager);
-        List list = new ArrayList();
-        MyAdapter adapter = new MyAdapter(getActivity(),list);
+        //List list = new ArrayList();
+        rv_home_list.addItemDecoration(new DividerItemDecoration(getActivity(),DividerItemDecoration.VERTICAL));
+        MyAdapter adapter = new MyAdapter(getActivity(),listBeans);
         adapter.setOnItemClickLitener(new MyAdapter.OnItemClickLitener() {
             @Override
             public void onItemClick(View view, int position) {

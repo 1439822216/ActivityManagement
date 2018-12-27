@@ -1,10 +1,12 @@
 package com.example.administrator.activitymanagement;
 
+import android.app.ActivityManager;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import com.example.administrator.activitymanagement.domain.ActivityListBean;
 import com.example.administrator.activitymanagement.domain.UserInfo;
 
 import java.util.ArrayList;
@@ -50,11 +52,33 @@ public class MySQLiteAdapter {
             info.setTouxiang(cursor.getString(4));
             info.setUsername(cursor.getString(5));
             info.setPassword(cursor.getString(6));
-
         }
         closeDB();
         return info;
     }
+
+    public List<ActivityListBean> queryActivity(){
+        List<ActivityListBean> listBeans = new ArrayList<ActivityListBean>();
+        openDB();
+        Cursor activity = database.query("activity", null, null, null, null, null, null);
+        while (activity.moveToNext()){
+            ActivityListBean activityListBean = new ActivityListBean();
+            activityListBean.setAid(activity.getString(0));
+            activityListBean.setaName(activity.getString(1));
+            activityListBean.setAimageId(activity.getString(2));
+            activityListBean.setaUid(activity.getString(3));
+            activityListBean.setaUsername(activity.getString(4));
+            activityListBean.setaOpenTime(activity.getString(5));
+            activityListBean.setaEndTime(activity.getString(6));
+            activityListBean.setaPlace(activity.getString(7));
+            activityListBean.setaInfo(activity.getString(8));
+            activityListBean.setaTelephone(activity.getString(9));
+            listBeans.add(activityListBean);
+        }
+        closeDB();
+        return listBeans;
+    }
+
 
     /**
      * 对注册用户进行插入user
@@ -79,5 +103,6 @@ public class MySQLiteAdapter {
         closeDB();
         return result;
     }
+
 
 }
