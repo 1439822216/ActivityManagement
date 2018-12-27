@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/QQlogin"
+    android:background="@drawable/llogin"
     tools:context=".LoginActivity">
 
     <EditText
@@ -18,7 +18,7 @@
         android:ems="10"
         android:hint="请输入账号"
         android:inputType="textPersonName"
-        android:textColor="@android:color/background_light"
+        android:textColor="@android:color/background_dark"
         android:textSize="36sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -37,7 +37,7 @@
         android:ems="10"
         android:hint="请输入密码"
         android:inputType="textPersonName"
-        android:textColor="@android:color/background_light"
+        android:textColor="@android:color/background_dark"
         android:textSize="36sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -65,7 +65,7 @@
     <Button
         android:id="@+id/btn_login_login"
         android:layout_width="match_parent"
-        android:layout_height="75dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
         android:background="@android:color/holo_blue_bright"
@@ -80,7 +80,7 @@
     <Button
         android:id="@+id/btn_login_register"
         android:layout_width="match_parent"
-        android:layout_height="75dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
         android:background="@android:color/holo_blue_bright"
