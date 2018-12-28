@@ -24,14 +24,15 @@
         android:id="@+id/tv_edit_aName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:text="活动名称："
         android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/tv_edit_aOpenTime"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.1"
+        app:layout_constraintHorizontal_bias="0.07"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.17000002" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_edit_top"
+        app:layout_constraintVertical_bias="0.050000012" />
 
     <EditText
         android:id="@+id/ed_edit_aName"
@@ -48,14 +49,14 @@
         android:id="@+id/tv_edit_aOpenTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:inputType="none"
         android:text="开始时间："
         android:textSize="24sp"
-        android:inputType="none"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/tv_edit_aEndTime"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.1"
+        app:layout_constraintHorizontal_bias="0.07"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_edit_aName"
         app:layout_constraintVertical_bias="0.25" />
 
     <EditText
@@ -87,11 +88,11 @@
         android:layout_height="wrap_content"
         android:text="结束时间："
         android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/tv_edit_aPlace"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.1"
+        app:layout_constraintHorizontal_bias="0.07"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_edit_aOpenTime"
         app:layout_constraintVertical_bias="0.32999998" />
 
     <TextView
@@ -100,11 +101,11 @@
         android:layout_height="wrap_content"
         android:text="活动地点："
         android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/tv_edit_aInfo"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.1"
+        app:layout_constraintHorizontal_bias="0.07"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_edit_aEndTime"
         app:layout_constraintVertical_bias="0.41000003" />
 
     <EditText
@@ -124,11 +125,11 @@
         android:layout_height="wrap_content"
         android:text="活动信息："
         android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/ed_edit_aInfo"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.1"
+        app:layout_constraintHorizontal_bias="0.07"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_edit_aPlace" />
 
     <EditText
         android:id="@+id/ed_edit_aInfo"
@@ -144,4 +145,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_edit_aInfo"
         app:layout_constraintVertical_bias="0.58000004" />
+
+    <Button
+        android:id="@+id/btn_edit_Release"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:text="发布"
+        android:textSize="24sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/tv_edit_top"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.766"
+        app:layout_constraintStart_toEndOf="@+id/tv_edit_top" />
 </android.support.constraint.ConstraintLayout>
