@@ -22,7 +22,7 @@ public class InfoActivity extends AppCompatActivity {
         Intent intent = getIntent();
         bundle = intent.getExtras();
         ActivityListBean activityListBean = (ActivityListBean) bundle.getSerializable("activity");
-        //Log.i("www",activityListBean.toString());
+
         tv_info_title.setText(activityListBean.getaName());
         tv_info_time.setText("活动时间：" + activityListBean.getaOpenTime() + "至" + activityListBean.getaEndTime());
         tv_info_address.setText("活动地点：" + activityListBean.getaPlace());

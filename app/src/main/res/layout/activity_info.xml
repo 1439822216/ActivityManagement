@@ -109,7 +109,7 @@
                 android:textSize="24sp" />
         </LinearLayout>
     </ScrollView>
-//
+
     <Button
         android:id="@+id/btn_info_sign"
         android:layout_width="0dp"
