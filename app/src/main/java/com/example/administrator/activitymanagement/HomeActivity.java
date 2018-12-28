@@ -1,6 +1,7 @@
 package com.example.administrator.activitymanagement;
 
 import android.app.Fragment;
+import android.content.Intent;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -53,9 +54,15 @@ public class HomeActivity extends Fragment  {
             @Override
             public void onItemClick(View view, int position) {
                 //获取点击的活动的所有信息
-                Toast.makeText(getActivity(), "" + position, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getActivity(), "" + position, Toast.LENGTH_SHORT).show();
+                //获取活动信息跳转到活动详情页面
                 ActivityListBean activityListBean = listBeans.get(position);
                 //Log.i("aaa",activityListBean.toString());
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("activity",activityListBean);
+                Intent intent = new Intent(view.getContext(),InfoActivity.class);
+                intent.putExtras(bundle);
+                startActivity(intent);
             }
         });
         rv_home_list.setAdapter(adapter);

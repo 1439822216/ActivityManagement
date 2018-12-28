@@ -1,6 +1,8 @@
 package com.example.administrator.activitymanagement.domain;
 
-public class ActivityListBean {
+import java.io.Serializable;
+
+public class ActivityListBean implements Serializable {
     private String aid;
     private String aName;
     private String aimageId;
