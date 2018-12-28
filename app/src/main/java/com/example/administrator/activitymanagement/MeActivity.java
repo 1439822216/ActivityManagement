@@ -1,18 +1,14 @@
 package com.example.administrator.activitymanagement;
 
 import android.app.Fragment;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.administrator.activitymanagement.domain.UserInfo;
-
-import java.io.Serializable;
-import java.util.List;
 
 public class MeActivity extends Fragment {
 
@@ -28,5 +24,6 @@ public class MeActivity extends Fragment {
         //获取user对象
          UserInfo user = (UserInfo)getArguments().getSerializable("user");
         Log.i("haha",user.toString());
+
     }
 }
