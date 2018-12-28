@@ -8,9 +8,12 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.administrator.activitymanagement.domain.ActivityListBean;
+import com.example.administrator.activitymanagement.utils.CalendarUtils;
+
+import java.util.Calendar;
 
 public class InfoActivity extends AppCompatActivity {
-    TextView tv_info_title,tv_info_status,tv_info_signNum,tv_info_time,tv_info_address,tv_info_user,tv_info_telephone,tv_info_info;
+    TextView tv_info_title,tv_info_status,tv_info_time,tv_info_address,tv_info_user,tv_info_telephone,tv_info_info;
     Button btn_info_sign;
     Bundle bundle = null;
     @Override
@@ -22,6 +25,19 @@ public class InfoActivity extends AppCompatActivity {
         Intent intent = getIntent();
         bundle = intent.getExtras();
         ActivityListBean activityListBean = (ActivityListBean) bundle.getSerializable("activity");
+       //计算时间
+        String time = activityListBean.getaOpenTime();
+        String[] split = time.split("-");
+        String year = split[0];
+        String month = split[1];
+        String day = split[2];
+        boolean flag = CalendarUtils.openTime(Integer.valueOf(year), Integer.valueOf(month), Integer.valueOf(day));
+        if (flag == false){
+            tv_info_status.setText("报名中");
+        }else {
+            tv_info_status.setText("活动中");
+            btn_info_sign.setText("报名结束");
+        }
 
         tv_info_title.setText(activityListBean.getaName());
         tv_info_time.setText("活动时间：" + activityListBean.getaOpenTime() + "至" + activityListBean.getaEndTime());
@@ -34,7 +50,6 @@ public class InfoActivity extends AppCompatActivity {
     private void initView() {
         tv_info_title = findViewById(R.id.tv_info_title);
         tv_info_status = findViewById(R.id.tv_info_status);
-        tv_info_signNum = findViewById(R.id.tv_info_signNum);
         tv_info_time = findViewById(R.id.tv_info_time);
         tv_info_address = findViewById(R.id.tv_info_address);
         tv_info_user = findViewById(R.id.tv_info_user);

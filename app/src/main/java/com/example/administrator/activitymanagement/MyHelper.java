@@ -58,7 +58,7 @@ public class MyHelper extends SQLiteOpenHelper {
                 "（2）每人只可加入一支队伍，违者所在队伍整队取消参赛资格。\n" +
                 "（3）每支队伍须确定领队人选、成员名单、申报方案等信息，方案提交后不得随意更改。\n" +
                 "','123456')");
-        sqLiteDatabase.execSQL("insert into activity values('8DDE027543EF4A6FAE98A6D9C94B953B','随手公益','a4','0559A1CC0D8F4CDAB3F46AF80A8ACD14','董思远','2018-12-28','2018-12-31','珠江大道','活动目的：致敬环卫工人，保护环境，爱护他人劳动成果，从我们做起。\n" +
+        sqLiteDatabase.execSQL("insert into activity values('8DDE027543EF4A6FAE98A6D9C94B953B','随手公益','a4','0559A1CC0D8F4CDAB3F46AF80A8ACD14','董思远','2018-12-27','2018-12-31','珠江大道','活动目的：致敬环卫工人，保护环境，爱护他人劳动成果，从我们做起。\n" +
                 "活动主题：随手公益。\n" +
                 "活动时间：2018-12-31  07:00-08:00。\n" +
                 "活动要求 ：已收到短信通知为准。','123456')");

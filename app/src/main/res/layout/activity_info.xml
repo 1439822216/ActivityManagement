@@ -59,13 +59,6 @@
                     android:textColor="@android:color/background_light"
                     android:textSize="24sp" />
 
-                <TextView
-                    android:id="@+id/tv_info_signNum"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:text="距离报名结束还剩1天"
-                    android:textSize="24sp" />
             </RelativeLayout>
 
             <TextView
