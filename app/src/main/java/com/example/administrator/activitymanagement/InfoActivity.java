@@ -18,6 +18,7 @@ public class InfoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info);
         initView();
+        //获取数据
         Intent intent = getIntent();
         bundle = intent.getExtras();
         ActivityListBean activityListBean = (ActivityListBean) bundle.getSerializable("activity");
