@@ -33,7 +33,7 @@ public class EditActivity extends Fragment {
         super.onActivityCreated(savedInstanceState);
         //获取user对象
         List<UserInfo> user = (List<UserInfo>) getArguments().getSerializable("user");
-
+        initView();
     }
 
     public void initView() {
