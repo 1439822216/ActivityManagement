@@ -1,6 +1,7 @@
 package com.example.administrator.activitymanagement;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -31,12 +32,17 @@ public class InfoActivity extends AppCompatActivity {
         String year = split[0];
         String month = split[1];
         String day = split[2];
+        //Log.i("zzz","年 = " + year  + "月 = " + month + "日 = " + day);
         boolean flag = CalendarUtils.openTime(Integer.valueOf(year), Integer.valueOf(month), Integer.valueOf(day));
+        Log.i("flag",String.valueOf(flag));
         if (flag == false){
-            tv_info_status.setText("报名中");
-        }else {
             tv_info_status.setText("活动中");
             btn_info_sign.setText("报名结束");
+            tv_info_status.setBackgroundColor(Color.parseColor("#ffff8800"));
+            btn_info_sign.setBackgroundColor(Color.parseColor("#ffff8800"));
+            btn_info_sign.setEnabled(false);
+        }else {
+            tv_info_status.setText("报名中");
         }
 
         tv_info_title.setText(activityListBean.getaName());

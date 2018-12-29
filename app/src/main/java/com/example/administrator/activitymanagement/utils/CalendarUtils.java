@@ -1,5 +1,7 @@
 package com.example.administrator.activitymanagement.utils;
 
+import android.util.Log;
+
 import java.util.Calendar;
 
 public class CalendarUtils {
@@ -10,17 +12,16 @@ public class CalendarUtils {
         int systemyear = calendar.get(Calendar.YEAR);
         int systemmonth = calendar.get(Calendar.MONTH) + 1;
         int systemday = calendar.get(Calendar.DAY_OF_MONTH);
-        if (year < systemyear){
-            flag = false;
-        }else {
-            if (month < systemmonth){
-                flag = false;
-            }else {
-                if (day < systemday){
-                    flag = false;
-                }
-            }
-        }
+        //Log.i("asd",systemyear + "-" + systemmonth + "-" + systemday);
+       if (year < systemyear){
+           flag = false;
+       }
+       if (year == systemyear && month < systemmonth){
+           flag = false;
+       }
+       if (year == systemyear && month == systemmonth && day < systemday){
+           flag = false;
+       }
         return flag;
     }
 }
