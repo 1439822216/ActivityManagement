@@ -12,20 +12,20 @@ public class MyHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         String sql = "create table userInfo (uid varchar(20) primary key ,name varchar(20),telephone varchar(20),clazz varchar(20),touxiang varchar(20),username varchar(20) unique,password varchar(20))";
-        String sql1 = "create table activity(aid varchar(20) primary key ,aName varchar(50),aimageId varchar(20),aUid varchar(20),aUsername varchar(20),aOpenTime varchar(20), aEndTime varchar(20),aPlace varchar(30),aInfo varchar(200),aTelephone varchar(20))";
+        String sql1 = "create table activity(aid varchar(20) primary key ,aName varchar(50)  not null,aimageId varchar(20) not null,aUid varchar(20) not null,aUsername varchar(20) not null,aOpenTime varchar(20) not null, aEndTime varchar(20) not null,aPlace varchar(30) not null,aInfo varchar(200) not null,aTelephone varchar(20) not null)";
 
         sqLiteDatabase.execSQL(sql);
         sqLiteDatabase.execSQL(sql1);
-        sqLiteDatabase.execSQL("insert into userInfo values('E3BF64A5C21243678CDBC4C21649C954','戴俊迈','123456','移动172','1','111','123456')");
-        sqLiteDatabase.execSQL("insert into userInfo values('ADC80B549F2D4D1DB1E5315C1144F0BA','戴逸仙','123456','化学172','2','222','123456')");
-        sqLiteDatabase.execSQL("insert into userInfo values('8BB3195305814946903BBFA742D1BC49','文安然','123456','数学172','3','333','123456')");
-        sqLiteDatabase.execSQL("insert into userInfo values('0559A1CC0D8F4CDAB3F46AF80A8ACD14','董思远','123456','机器人17','4','444','123456')");
-        sqLiteDatabase.execSQL("insert into userInfo values('31F0275BBE62445681A451701826B607','范德华','123456','网站171','5','555','123456')");
-        sqLiteDatabase.execSQL("insert into userInfo values('F192C168E2594B33BF49DCB74AF10AE4','金羽彤','123456','移动172','1','666','123456')");
-        sqLiteDatabase.execSQL("insert into userInfo values('AA3326A5654747E3878E3C34429EFEAF','毛梓珊','123456','化学172','2','777','123456')");
-        sqLiteDatabase.execSQL("insert into userInfo values('F46704EE82984AF1A6DF8F25A9E5FF5C','冯山柏','123456','数学172','3','888','123456')");
-        sqLiteDatabase.execSQL("insert into userInfo values('7A661C34C4FD4E29A018B46AF2477DC7','蒋迎松','123456','机器人17','4','999','123456')");
-        sqLiteDatabase.execSQL("insert into userInfo values('42D284C4837E4830B53C5CF3E22B1A9C','乔曼妮','123456','网站171','5','110','123456')");
+        sqLiteDatabase.execSQL("insert into userInfo values('E3BF64A5C21243678CDBC4C21649C954','戴俊迈','123456','移动172','t1','111','123456')");
+        sqLiteDatabase.execSQL("insert into userInfo values('ADC80B549F2D4D1DB1E5315C1144F0BA','戴逸仙','123456','化学172','t2','222','123456')");
+        sqLiteDatabase.execSQL("insert into userInfo values('8BB3195305814946903BBFA742D1BC49','文安然','123456','数学172','t3','333','123456')");
+        sqLiteDatabase.execSQL("insert into userInfo values('0559A1CC0D8F4CDAB3F46AF80A8ACD14','董思远','123456','机器人17','t4','444','123456')");
+        sqLiteDatabase.execSQL("insert into userInfo values('31F0275BBE62445681A451701826B607','范德华','123456','网站171','t5','555','123456')");
+        sqLiteDatabase.execSQL("insert into userInfo values('F192C168E2594B33BF49DCB74AF10AE4','金羽彤','123456','移动172','t1','666','123456')");
+        sqLiteDatabase.execSQL("insert into userInfo values('AA3326A5654747E3878E3C34429EFEAF','毛梓珊','123456','化学172','t2','777','123456')");
+        sqLiteDatabase.execSQL("insert into userInfo values('F46704EE82984AF1A6DF8F25A9E5FF5C','冯山柏','123456','数学172','t3','888','123456')");
+        sqLiteDatabase.execSQL("insert into userInfo values('7A661C34C4FD4E29A018B46AF2477DC7','蒋迎松','123456','机器人17','t4','999','123456')");
+        sqLiteDatabase.execSQL("insert into userInfo values('42D284C4837E4830B53C5CF3E22B1A9C','乔曼妮','123456','网站171','t5','110','123456')");
         insertActivity(sqLiteDatabase);
     }
 
@@ -46,7 +46,7 @@ public class MyHelper extends SQLiteOpenHelper {
                 "五、活动进行\n" +
                 "活动人员自己与老师沟通或自己与相关同学沟通自行选择时间去到自己的高中学校，自己去宣讲有关的大学录取途径并发城建学校的宣传册（必须提前做好相关的宣讲内容工作），可以在讲述宣讲的同时加上自己在城建的大学生活。',\n" +
                 "'123456')");
-        sqLiteDatabase.execSQL("insert into activity values('8837B253D2B14E4CB1C2932715722378','霞洞中学2019年元旦文艺晚会','a2','ADC80B549F2D4D1DB1E5315C1144F0BA','戴逸仙','2018-12-27','2018-12-27 ','电白区霞洞中学','时间如白驹过隙，转眼间2019年元旦将至，为庆祝元旦佳节，也进一步推进我校文艺活动的蓬勃发展，丰富校园文化生活，活跃学习氛围，给同学们一个真正展示自我风采和勇气的舞台。2019年元旦晚会将以宏大的气魄，不凡的手笔，新颖的题材，经典的节目，集多种舞台表演形式，真实反映我校校园文化建设，以出色的工作和优异的成绩，推进我校校风学风及校园文化建设，迎接新年的到来。\n" +
+        sqLiteDatabase.execSQL("insert into activity values('8837B253D2B14E4CB1C2932715722378','霞洞中学2019年元旦文艺晚会','a2','ADC80B549F2D4D1DB1E5315C1144F0BA','戴逸仙','2018-12-27','2018-12-27','电白区霞洞中学','时间如白驹过隙，转眼间2019年元旦将至，为庆祝元旦佳节，也进一步推进我校文艺活动的蓬勃发展，丰富校园文化生活，活跃学习氛围，给同学们一个真正展示自我风采和勇气的舞台。2019年元旦晚会将以宏大的气魄，不凡的手笔，新颖的题材，经典的节目，集多种舞台表演形式，真实反映我校校园文化建设，以出色的工作和优异的成绩，推进我校校风学风及校园文化建设，迎接新年的到来。\n" +
                 "一、活动主题：好心茂名，平安电白。\n" +
                 "二、活动对象：全校学生，以班级为单位。\n" +
                 "三、活动地点：学校舞台\n" +

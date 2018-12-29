@@ -105,4 +105,20 @@ public class MySQLiteAdapter {
     }
 
 
+    public boolean insertActivity(ActivityListBean activityListBean){
+        boolean result = false;
+        openDB();
+        String sql = "insert into activity values(?,?,?,?,?,?,?,?,?,?)";
+        Object[] parmars = {activityListBean.getAid(),activityListBean.getaName(),activityListBean.getAimageId(),activityListBean.getaUid(),activityListBean.getaUsername(),activityListBean.getaOpenTime(),activityListBean.getaEndTime()
+        ,activityListBean.getaPlace(),activityListBean.getaInfo(),activityListBean.getaTelephone()};
+        try{
+            database.execSQL(sql,parmars);
+            result = true;
+        }catch (Exception e){
+            result = false;
+        }
+
+        closeDB();
+        return result;
+    }
 }

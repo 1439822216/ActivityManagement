@@ -38,7 +38,7 @@ Button btn_reg_register;
                         String uid = UUIDUtils.getCode();
                         int i = RandomUtils.randomNum(13);
                         info = new UserInfo(uid, name, telephone, clazz, null, username, password);
-                        info.setUid(i + ".jpg");
+                        info.setUid("t" + i);
                         MySQLiteAdapter adapter = new MySQLiteAdapter(getApplicationContext());
                         boolean result = adapter.insertUser(info);
                         if (result == true) {

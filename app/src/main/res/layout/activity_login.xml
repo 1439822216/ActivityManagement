@@ -37,7 +37,7 @@
         android:background="@drawable/ll"
         android:ems="10"
         android:hint="请输入密码"
-        android:inputType="textPersonName"
+        android:inputType="textPersonName|textPassword"
         android:textColor="@android:color/background_dark"
         android:textSize="36sp"
         app:layout_constraintBottom_toBottomOf="parent"

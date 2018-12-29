@@ -12,8 +12,12 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Toast;
 
+import com.example.administrator.activitymanagement.domain.ActivityListBean;
 import com.example.administrator.activitymanagement.domain.UserInfo;
+import com.example.administrator.activitymanagement.utils.RandomUtils;
+import com.example.administrator.activitymanagement.utils.UUIDUtils;
 
 import java.util.Calendar;
 import java.util.List;
@@ -34,8 +38,36 @@ public class EditActivity extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         //获取user对象
-        List<UserInfo> user = (List<UserInfo>) getArguments().getSerializable("user");
+        final UserInfo user = (UserInfo)getArguments().getSerializable("user");
         initView();
+        //设置发布活动的点击事件
+        btn_edit_Release.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String activityName = ed_edit_aName.getText().toString().trim();
+                String openTime = ed_edit_aOpenTime.getText().toString().trim();
+                String endTime = ed_edit_aEndTime.getText().toString().trim();
+                String place = ed_edit_aPlace.getText().toString().trim();
+                String info = ed_edit_aInfo.getText().toString().trim();
+                String aid = UUIDUtils.getCode();
+                String aimageid = new String("a" +RandomUtils.randomNum(9));
+                String uid = user.getUid();
+                String name = user.getName();
+                String telephone = user.getTelephone();
+                if (activityName.equals("") || openTime.equals("") || endTime.equals("") || place.equals("") || info.equals("")){
+                    Toast.makeText(view.getContext(), "活动信息不能为空", Toast.LENGTH_SHORT).show();
+                }else {
+                    ActivityListBean activityListBean = new ActivityListBean(aid,activityName,aimageid,uid,name,openTime,endTime,place,info,telephone);
+                    MySQLiteAdapter mySQLiteAdapter = new MySQLiteAdapter(view.getContext());
+                    boolean b = mySQLiteAdapter.insertActivity(activityListBean);
+                    if (b == true){
+                        Toast.makeText(view.getContext(), "活动发布成功", Toast.LENGTH_SHORT).show();
+                    }else {
+                        Toast.makeText(view.getContext(), "活动发布失败", Toast.LENGTH_SHORT).show();
+                    }
+                }
+                }
+        });
     }
 
     public void initView() {

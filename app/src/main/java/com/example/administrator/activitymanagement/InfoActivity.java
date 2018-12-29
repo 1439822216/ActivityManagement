@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -26,16 +27,16 @@ public class InfoActivity extends AppCompatActivity {
         Intent intent = getIntent();
         bundle = intent.getExtras();
         ActivityListBean activityListBean = (ActivityListBean) bundle.getSerializable("activity");
-       //计算时间
-        String time = activityListBean.getaOpenTime();
-        String[] split = time.split("-");
-        String year = split[0];
-        String month = split[1];
-        String day = split[2];
+       //计算活动开始时间
+        String openTime = activityListBean.getaOpenTime();
+        String[] split = openTime.split("-");
+        String openYear = split[0];
+        String openMonth = split[1];
+        String openDay = split[2];
         //Log.i("zzz","年 = " + year  + "月 = " + month + "日 = " + day);
-        boolean flag = CalendarUtils.openTime(Integer.valueOf(year), Integer.valueOf(month), Integer.valueOf(day));
-        Log.i("flag",String.valueOf(flag));
-        if (flag == false){
+        boolean openFlag = CalendarUtils.openTime(Integer.valueOf(openYear), Integer.valueOf(openMonth), Integer.valueOf(openDay));
+        //Log.i("flag",String.valueOf(flag));
+        if (openFlag == false){
             tv_info_status.setText("活动中");
             btn_info_sign.setText("报名结束");
             tv_info_status.setBackgroundColor(Color.parseColor("#ffff8800"));
@@ -44,13 +45,33 @@ public class InfoActivity extends AppCompatActivity {
         }else {
             tv_info_status.setText("报名中");
         }
-
+        //计算活动结束时间
+        String endTime = activityListBean.getaEndTime();
+        String[] split1 = endTime.split("-");
+        String endYear = split1[0];
+        String endMonth = split1[1];
+        String endDay = split1[2];
+        boolean endFlag = CalendarUtils.openTime(Integer.valueOf(endYear), Integer.valueOf(endMonth), Integer.valueOf(endDay));
+        if (endFlag == false){
+            tv_info_status.setText("活动结束");
+            btn_info_sign.setText("活动已结束");
+            tv_info_status.setBackgroundColor(Color.parseColor("#ffff4444"));
+            btn_info_sign.setBackgroundColor(Color.parseColor("#ffff4444"));
+            btn_info_sign.setEnabled(false);
+        }
         tv_info_title.setText(activityListBean.getaName());
         tv_info_time.setText("活动时间：" + activityListBean.getaOpenTime() + "至" + activityListBean.getaEndTime());
         tv_info_address.setText("活动地点：" + activityListBean.getaPlace());
         tv_info_user.setText("发起人：" + activityListBean.getaUsername());
         tv_info_telephone.setText("电话：" + activityListBean.getaTelephone());
         tv_info_info.setText(activityListBean.getaInfo());
+        //设置报名的点击事件
+        btn_info_sign.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
     }
 
     private void initView() {

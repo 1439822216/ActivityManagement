@@ -26,7 +26,16 @@ ImageView im_me_image;
         super.onActivityCreated(savedInstanceState);
         //获取user对象
          UserInfo user = (UserInfo)getArguments().getSerializable("user");
-        Log.i("haha",user.toString());
+       // Log.i("haha",user.toString());
+        initView();
+       int iamgeId = getResources().getIdentifier(user.getTouxiang(),"drawable",getActivity().getPackageName());
+       im_me_image.setImageResource(iamgeId);
+       tv_me_name.setText("姓名：" + user.getName());
+       tv_me_class.setText("班级：" + user.getClazz());
+       tv_me_phone.setText("电话：" + user.getTelephone());
+    }
+
+    private void initView() {
         tv_me_name=getActivity().findViewById(R.id.tv_me_name);
         tv_me_class=getActivity().findViewById(R.id.tv_me_class);
         tv_me_phone=getActivity().findViewById(R.id.tv_me_phone);
