@@ -1,6 +1,7 @@
 package com.example.administrator.activitymanagement;
 
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.util.Log;
@@ -33,6 +34,13 @@ ImageView im_me_image;
        tv_me_name.setText("姓名：" + user.getName());
        tv_me_class.setText("班级：" + user.getClazz());
        tv_me_phone.setText("电话：" + user.getTelephone());
+       tv_me_End.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View view) {
+               Intent intent = new Intent(view.getContext(),LoginActivity.class);
+               startActivity(intent);
+           }
+       });
     }
 
     private void initView() {

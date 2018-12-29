@@ -68,6 +68,7 @@ public class EditActivity extends Fragment {
                 }
                 }
         });
+
     }
 
     public void initView() {

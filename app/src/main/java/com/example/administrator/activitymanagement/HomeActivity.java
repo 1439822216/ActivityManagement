@@ -42,14 +42,14 @@ public class HomeActivity extends Fragment  {
         UserInfo user = (UserInfo)getArguments().getSerializable("user");
         //Log.i("haha",user.toString());
         //获取所有活动
-        MySQLiteAdapter mySQLiteAdapter = new MySQLiteAdapter(getActivity());
+        final MySQLiteAdapter mySQLiteAdapter = new MySQLiteAdapter(getActivity());
         final List<ActivityListBean> listBeans = mySQLiteAdapter.queryActivity();
         Log.i("aaa",listBeans.toString());
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
         rv_home_list.setLayoutManager(linearLayoutManager);
         //List list = new ArrayList();
         rv_home_list.addItemDecoration(new DividerItemDecoration(getActivity(),DividerItemDecoration.VERTICAL));
-        MyAdapter adapter = new MyAdapter(getActivity(),listBeans);
+        final MyAdapter adapter = new MyAdapter(getActivity(),listBeans);
         adapter.setOnItemClickLitener(new MyAdapter.OnItemClickLitener() {
             @Override
             public void onItemClick(View view, int position) {
@@ -67,6 +67,22 @@ public class HomeActivity extends Fragment  {
         });
         rv_home_list.setAdapter(adapter);
 
+
+        //搜索按钮
+        btn_home_search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String text = et_home_search.getText().toString().trim();
+                if (text != null){
+                    //修改数据源
+                    MySQLiteAdapter mySQLiteAdapter1 = new MySQLiteAdapter(getActivity());
+                    List<ActivityListBean> listBeans1 = mySQLiteAdapter.querySearchList(text);
+                    //Log.i("sear",listBeans1.toString());
+                    MyAdapter adapter = new MyAdapter(getActivity(),listBeans1);
+                    rv_home_list.swapAdapter(adapter,true);
+                }
+            }
+        });
     }
 
     private void initView() {

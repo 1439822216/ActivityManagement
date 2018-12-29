@@ -104,7 +104,11 @@ public class MySQLiteAdapter {
         return result;
     }
 
-
+    /**
+     * 插入活动
+     * @param activityListBean
+     * @return
+     */
     public boolean insertActivity(ActivityListBean activityListBean){
         boolean result = false;
         openDB();
@@ -120,5 +124,33 @@ public class MySQLiteAdapter {
 
         closeDB();
         return result;
+    }
+
+    /**
+     * 根据搜索内容来查询活动列表
+     * @param searchText
+     * @return
+     */
+    public List<ActivityListBean> querySearchList(String searchText){
+        openDB();
+        List<ActivityListBean> list = new ArrayList();
+        String sql = "select * from activity where aName like '%" + searchText + "%'";
+        Cursor cursor = database.rawQuery(sql,new String[]{});
+        while (cursor.moveToNext()){
+            ActivityListBean activityListBean = new ActivityListBean();
+            activityListBean.setAid(cursor.getString(0));
+            activityListBean.setaName(cursor.getString(1));
+            activityListBean.setAimageId(cursor.getString(2));
+            activityListBean.setaUid(cursor.getString(3));
+            activityListBean.setaUsername(cursor.getString(4));
+            activityListBean.setaOpenTime(cursor.getString(5));
+            activityListBean.setaEndTime(cursor.getString(6));
+            activityListBean.setaPlace(cursor.getString(7));
+            activityListBean.setaInfo(cursor.getString(8));
+            activityListBean.setaTelephone(cursor.getString(9));
+            list.add(activityListBean);
+        }
+        closeDB();
+        return list;
     }
 }
