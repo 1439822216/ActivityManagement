@@ -44,7 +44,7 @@ public class HomeActivity extends Fragment  {
         //获取所有活动
         final MySQLiteAdapter mySQLiteAdapter = new MySQLiteAdapter(getActivity());
         final List<ActivityListBean> listBeans = mySQLiteAdapter.queryActivity();
-        Log.i("aaa",listBeans.toString());
+        //Log.i("aaa",listBeans.toString());
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
         rv_home_list.setLayoutManager(linearLayoutManager);
         //List list = new ArrayList();
@@ -53,16 +53,7 @@ public class HomeActivity extends Fragment  {
         adapter.setOnItemClickLitener(new MyAdapter.OnItemClickLitener() {
             @Override
             public void onItemClick(View view, int position) {
-                //获取点击的活动的所有信息
-                //Toast.makeText(getActivity(), "" + position, Toast.LENGTH_SHORT).show();
-                //获取活动信息跳转到活动详情页面
-                ActivityListBean activityListBean = listBeans.get(position);
-                //Log.i("aaa",activityListBean.toString());
-                Bundle bundle = new Bundle();
-                bundle.putSerializable("activity",activityListBean);
-                Intent intent = new Intent(view.getContext(),InfoActivity.class);
-                intent.putExtras(bundle);
-                startActivity(intent);
+                clickInfo(view,position,listBeans);
             }
         });
         rv_home_list.setAdapter(adapter);
@@ -76,9 +67,15 @@ public class HomeActivity extends Fragment  {
                 if (text != null){
                     //修改数据源
                     MySQLiteAdapter mySQLiteAdapter1 = new MySQLiteAdapter(getActivity());
-                    List<ActivityListBean> listBeans1 = mySQLiteAdapter.querySearchList(text);
+                    final List<ActivityListBean> listBeans1 = mySQLiteAdapter.querySearchList(text);
                     //Log.i("sear",listBeans1.toString());
                     MyAdapter adapter = new MyAdapter(getActivity(),listBeans1);
+                    adapter.setOnItemClickLitener(new MyAdapter.OnItemClickLitener() {
+                        @Override
+                        public void onItemClick(View view, int position) {
+                            clickInfo(view,position,listBeans1);
+                        }
+                    });
                     rv_home_list.swapAdapter(adapter,true);
                 }
             }
@@ -91,6 +88,24 @@ public class HomeActivity extends Fragment  {
         rv_home_list = getView().findViewById(R.id.rv_home_list);
     }
 
+    /**
+     * adapte的点击事件
+     * @param view
+     * @param position
+     * @param listBeans
+     */
+    public void clickInfo(View view, int position, List<ActivityListBean> listBeans){
+        //获取点击的活动的所有信息
+        //Toast.makeText(getActivity(), "" + position, Toast.LENGTH_SHORT).show();
+        //获取活动信息跳转到活动详情页面
+        ActivityListBean activityListBean = listBeans.get(position);
+        //Log.i("aaa",activityListBean.toString());
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("activity",activityListBean);
+        Intent intent = new Intent(view.getContext(),InfoActivity.class);
+        intent.putExtras(bundle);
+        startActivity(intent);
+    }
 
 
 
