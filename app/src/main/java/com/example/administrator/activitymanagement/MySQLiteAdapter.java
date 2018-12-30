@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteDatabase;
 
 import com.example.administrator.activitymanagement.domain.ActivityListBean;
 import com.example.administrator.activitymanagement.domain.UserInfo;
+import com.example.administrator.activitymanagement.domain.UserSignBean;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -57,6 +58,10 @@ public class MySQLiteAdapter {
         return info;
     }
 
+    /**
+     * 查询所有活动
+     * @return
+     */
     public List<ActivityListBean> queryActivity(){
         List<ActivityListBean> listBeans = new ArrayList<ActivityListBean>();
         openDB();
@@ -192,6 +197,12 @@ public class MySQLiteAdapter {
         return result;
     }
 
+    /**
+     * 删除用户活动报名状况
+     * @param uid
+     * @param aid
+     * @return
+     */
     public boolean deleteSign(String uid , String aid){
         boolean result = false;
         openDB();
@@ -201,5 +212,81 @@ public class MySQLiteAdapter {
         }
         closeDB();
         return  result;
+    }
+
+
+    /**
+     * 查询自己所有发布的活动
+     * @param uid
+     * @return
+     */
+    public List<ActivityListBean> queryActivityByUser(String uid){
+        List<ActivityListBean> listBeans = new ArrayList<ActivityListBean>();
+        openDB();
+        Cursor activity = database.query("activity", null, "aUid = ?", new String[]{uid}, null, null, null);
+        while (activity.moveToNext()){
+            ActivityListBean activityListBean = new ActivityListBean();
+            activityListBean.setAid(activity.getString(0));
+            activityListBean.setaName(activity.getString(1));
+            activityListBean.setAimageId(activity.getString(2));
+            activityListBean.setaUid(activity.getString(3));
+            activityListBean.setaUsername(activity.getString(4));
+            activityListBean.setaOpenTime(activity.getString(5));
+            activityListBean.setaEndTime(activity.getString(6));
+            activityListBean.setaPlace(activity.getString(7));
+            activityListBean.setaInfo(activity.getString(8));
+            activityListBean.setaTelephone(activity.getString(9));
+            listBeans.add(activityListBean);
+        }
+        closeDB();
+        return listBeans;
+    }
+
+    /**
+     * 根据uid查询活动aid
+     * @param uid
+     * @return
+     */
+    public List<UserSignBean> queryJoinByUser(String uid){
+        openDB();
+        List<UserSignBean> list = new ArrayList<>();
+        Cursor joinTo = database.query("joinTo", null, "uid = ?", new String[]{uid}, null, null, null);
+        while (joinTo.moveToNext()){
+            UserSignBean userSignBean = new UserSignBean();
+            userSignBean.setUid(joinTo.getString(0));
+            userSignBean.setAid(joinTo.getString(1));
+            list.add(userSignBean);
+        }
+        closeDB();
+        return list;
+    }
+
+    /**
+     * 通过aid查询活动
+     * @param list
+     * @return
+     */
+    public List<ActivityListBean> queryActivityByAid(List<UserSignBean> list){
+        List<ActivityListBean> listBeans = new ArrayList<ActivityListBean>();
+        openDB();
+        for (int i = 0 ; i < list.size(); i ++){
+            Cursor activity = database.query("activity", null, "aid = ?", new String[]{list.get(i).getAid()}, null, null, null);
+            while (activity.moveToNext()){
+                ActivityListBean activityListBean = new ActivityListBean();
+                activityListBean.setAid(activity.getString(0));
+                activityListBean.setaName(activity.getString(1));
+                activityListBean.setAimageId(activity.getString(2));
+                activityListBean.setaUid(activity.getString(3));
+                activityListBean.setaUsername(activity.getString(4));
+                activityListBean.setaOpenTime(activity.getString(5));
+                activityListBean.setaEndTime(activity.getString(6));
+                activityListBean.setaPlace(activity.getString(7));
+                activityListBean.setaInfo(activity.getString(8));
+                activityListBean.setaTelephone(activity.getString(9));
+                listBeans.add(activityListBean);
+             }
+        }
+        closeDB();
+        return listBeans;
     }
 }

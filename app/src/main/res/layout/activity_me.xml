@@ -25,6 +25,8 @@
                 android:layout_height="match_parent"
                 android:scaleType="fitXY"
                 android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
                 android:src="@android:drawable/alert_dark_frame" />
 
         </LinearLayout>
@@ -76,7 +78,7 @@
         android:background="@android:color/holo_blue_light"
         android:text="个人信息"
         android:textColor="@color/colorPrimaryDark"
-        android:textSize="48sp"
+        android:textSize="36sp"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -90,9 +92,23 @@
         android:paddingBottom="15dp"
         android:text="退出登录"
         android:textColor="@android:color/background_light"
-        android:textSize="30sp"
+        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btn_me_sign"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:paddingBottom="15dp"
+        android:paddingLeft="5dp"
+        android:paddingTop="15dp"
+        android:text="我参加的活动"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </android.support.constraint.ConstraintLayout>

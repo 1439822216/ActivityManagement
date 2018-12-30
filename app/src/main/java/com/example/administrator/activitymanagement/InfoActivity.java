@@ -39,7 +39,9 @@ public class InfoActivity extends AppCompatActivity {
         //Log.i("zzz","年 = " + year  + "月 = " + month + "日 = " + day);
         boolean openFlag = CalendarUtils.openTime(Integer.valueOf(openYear), Integer.valueOf(openMonth), Integer.valueOf(openDay));
         //Log.i("flag",String.valueOf(flag));
-        if (openFlag == false){
+        //设置button的状态，0为未报名，1为已报名;
+        btn_info_sign.setTag("0");
+        if (openFlag == false) {
             tv_info_status.setText("活动中");
             btn_info_sign.setText("报名结束");
             tv_info_status.setBackgroundColor(Color.parseColor("#ffff8800"));
@@ -57,8 +59,10 @@ public class InfoActivity extends AppCompatActivity {
             }else {
                 tv_info_status.setText("报名中");
             }
-
         }
+
+
+
         //计算活动结束时间
         String endTime = activityListBean.getaEndTime();
         String[] split1 = endTime.split("-");
@@ -80,12 +84,12 @@ public class InfoActivity extends AppCompatActivity {
         tv_info_telephone.setText("电话：" + activityListBean.getaTelephone());
         tv_info_info.setText(activityListBean.getaInfo());
         //设置报名的点击事件
-        //设置button的状态，0为未报名，1为已报名;
-        btn_info_sign.setTag("0");
+
         btn_info_sign.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String btnStatus =  btn_info_sign.getTag().toString();
+                Log.i("aaa",btnStatus);
                 if (btnStatus.equals("0")){
                     MySQLiteAdapter mySQLiteAdapter = new MySQLiteAdapter(view.getContext());
                     String uid = user.getUid();

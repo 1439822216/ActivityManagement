@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -16,6 +17,7 @@ import com.example.administrator.activitymanagement.domain.UserInfo;
 public class MeActivity extends Fragment {
 TextView tv_me_name,tv_me_class,tv_me_phone,tv_me_End;
 ImageView im_me_image;
+Button btn_me_sign;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
@@ -26,10 +28,10 @@ ImageView im_me_image;
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         //获取user对象
-         UserInfo user = (UserInfo)getArguments().getSerializable("user");
+         final UserInfo user = (UserInfo)getArguments().getSerializable("user");
        // Log.i("haha",user.toString());
         initView();
-       int iamgeId = getResources().getIdentifier(user.getTouxiang(),"drawable",getActivity().getPackageName());
+       final int iamgeId = getResources().getIdentifier(user.getTouxiang(),"drawable",getActivity().getPackageName());
        im_me_image.setImageResource(iamgeId);
        tv_me_name.setText("姓名：" + user.getName());
        tv_me_class.setText("班级：" + user.getClazz());
@@ -41,6 +43,16 @@ ImageView im_me_image;
                startActivity(intent);
            }
        });
+       btn_me_sign.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               Intent intent = new Intent(getActivity(),MeInfoActivity.class);
+               Bundle bundle = new Bundle();
+               bundle.putSerializable("me",user);
+               intent.putExtras(bundle);
+               startActivity(intent);
+           }
+       });
     }
 
     private void initView() {
@@ -49,5 +61,6 @@ ImageView im_me_image;
         tv_me_phone=getActivity().findViewById(R.id.tv_me_phone);
         tv_me_End=getActivity().findViewById(R.id.tv_me_End);
         im_me_image=getActivity().findViewById(R.id.im_me_image);
+        btn_me_sign = getActivity().findViewById(R.id.btn_me_sign);
     }
 }
