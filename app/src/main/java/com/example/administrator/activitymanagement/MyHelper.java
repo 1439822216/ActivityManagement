@@ -13,9 +13,10 @@ public class MyHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         String sql = "create table userInfo (uid varchar(20) primary key ,name varchar(20),telephone varchar(20),clazz varchar(20),touxiang varchar(20),username varchar(20) unique,password varchar(20))";
         String sql1 = "create table activity(aid varchar(20) primary key ,aName varchar(50)  not null,aimageId varchar(20) not null,aUid varchar(20) not null,aUsername varchar(20) not null,aOpenTime varchar(20) not null, aEndTime varchar(20) not null,aPlace varchar(30) not null,aInfo varchar(200) not null,aTelephone varchar(20) not null)";
-
+        String sql2 = "create table joinTo(uid varchar(20) not null,aid varchar(20) not null)";
         sqLiteDatabase.execSQL(sql);
         sqLiteDatabase.execSQL(sql1);
+        sqLiteDatabase.execSQL(sql2);
         sqLiteDatabase.execSQL("insert into userInfo values('E3BF64A5C21243678CDBC4C21649C954','戴俊迈','123456','移动172','t1','111','123456')");
         sqLiteDatabase.execSQL("insert into userInfo values('ADC80B549F2D4D1DB1E5315C1144F0BA','戴逸仙','123456','化学172','t2','222','123456')");
         sqLiteDatabase.execSQL("insert into userInfo values('8BB3195305814946903BBFA742D1BC49','文安然','123456','数学172','t3','333','123456')");

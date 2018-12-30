@@ -8,8 +8,10 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.administrator.activitymanagement.domain.ActivityListBean;
+import com.example.administrator.activitymanagement.domain.UserInfo;
 import com.example.administrator.activitymanagement.utils.CalendarUtils;
 
 import java.util.Calendar;
@@ -26,7 +28,8 @@ public class InfoActivity extends AppCompatActivity {
         //获取数据
         Intent intent = getIntent();
         bundle = intent.getExtras();
-        ActivityListBean activityListBean = (ActivityListBean) bundle.getSerializable("activity");
+        final ActivityListBean activityListBean = (ActivityListBean) bundle.getSerializable("activity");
+        final UserInfo user = (UserInfo) bundle.getSerializable("user");
        //计算活动开始时间
         String openTime = activityListBean.getaOpenTime();
         String[] split = openTime.split("-");
@@ -43,7 +46,18 @@ public class InfoActivity extends AppCompatActivity {
             btn_info_sign.setBackgroundColor(Color.parseColor("#ffff8800"));
             btn_info_sign.setEnabled(false);
         }else {
-            tv_info_status.setText("报名中");
+            String uid = user.getUid();
+            String aid = activityListBean.getAid();
+            MySQLiteAdapter mySQLiteAdapter = new MySQLiteAdapter(getApplicationContext());
+            boolean b = mySQLiteAdapter.querySign(uid, aid);
+            if (b == true){
+                btn_info_sign.setText("取消报名");
+                btn_info_sign.setBackgroundColor(Color.parseColor("#ffff4444"));
+                btn_info_sign.setTag("1");
+            }else {
+                tv_info_status.setText("报名中");
+            }
+
         }
         //计算活动结束时间
         String endTime = activityListBean.getaEndTime();
@@ -66,10 +80,35 @@ public class InfoActivity extends AppCompatActivity {
         tv_info_telephone.setText("电话：" + activityListBean.getaTelephone());
         tv_info_info.setText(activityListBean.getaInfo());
         //设置报名的点击事件
+        //设置button的状态，0为未报名，1为已报名;
+        btn_info_sign.setTag("0");
         btn_info_sign.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                String btnStatus =  btn_info_sign.getTag().toString();
+                if (btnStatus.equals("0")){
+                    MySQLiteAdapter mySQLiteAdapter = new MySQLiteAdapter(view.getContext());
+                    String uid = user.getUid();
+                    String aid = activityListBean.getAid();
+                    boolean b = mySQLiteAdapter.insertSign(uid, aid);
+                    if (b == true){
+                        Toast.makeText(InfoActivity.this, "报名成功", Toast.LENGTH_SHORT).show();
+                        btn_info_sign.setText("取消报名");
+                        btn_info_sign.setBackgroundColor(Color.parseColor("#ffff4444"));
+                        btn_info_sign.setTag("1");
+                    }
+                }else if (btnStatus.equals("1")){
+                    MySQLiteAdapter mySQLiteAdapter = new MySQLiteAdapter(view.getContext());
+                    String uid = user.getUid();
+                    String aid = activityListBean.getAid();
+                    boolean b = mySQLiteAdapter.deleteSign(uid, aid);
+                    if (b == true){
+                        Toast.makeText(InfoActivity.this, "取消报名成功", Toast.LENGTH_SHORT).show();
+                        btn_info_sign.setText("立即报名");
+                        btn_info_sign.setBackgroundColor(Color.parseColor("#FF33B5E5"));
+                        btn_info_sign.setTag("0");
+                    }
+                }
             }
         });
     }

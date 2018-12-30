@@ -39,7 +39,7 @@ public class HomeActivity extends Fragment  {
         super.onActivityCreated(savedInstanceState);
         initView();
         //获取user对象
-        UserInfo user = (UserInfo)getArguments().getSerializable("user");
+        final UserInfo user = (UserInfo)getArguments().getSerializable("user");
         //Log.i("haha",user.toString());
         //获取所有活动
         final MySQLiteAdapter mySQLiteAdapter = new MySQLiteAdapter(getActivity());
@@ -53,7 +53,7 @@ public class HomeActivity extends Fragment  {
         adapter.setOnItemClickLitener(new MyAdapter.OnItemClickLitener() {
             @Override
             public void onItemClick(View view, int position) {
-                clickInfo(view,position,listBeans);
+                clickInfo(view,position,listBeans,user);
             }
         });
         rv_home_list.setAdapter(adapter);
@@ -73,7 +73,7 @@ public class HomeActivity extends Fragment  {
                     adapter.setOnItemClickLitener(new MyAdapter.OnItemClickLitener() {
                         @Override
                         public void onItemClick(View view, int position) {
-                            clickInfo(view,position,listBeans1);
+                            clickInfo(view,position,listBeans1,user);
                         }
                     });
                     rv_home_list.swapAdapter(adapter,true);
@@ -94,7 +94,7 @@ public class HomeActivity extends Fragment  {
      * @param position
      * @param listBeans
      */
-    public void clickInfo(View view, int position, List<ActivityListBean> listBeans){
+    public void clickInfo(View view, int position, List<ActivityListBean> listBeans,UserInfo user){
         //获取点击的活动的所有信息
         //Toast.makeText(getActivity(), "" + position, Toast.LENGTH_SHORT).show();
         //获取活动信息跳转到活动详情页面
@@ -103,6 +103,7 @@ public class HomeActivity extends Fragment  {
         Bundle bundle = new Bundle();
         bundle.putSerializable("activity",activityListBean);
         Intent intent = new Intent(view.getContext(),InfoActivity.class);
+        bundle.putSerializable("user",user);
         intent.putExtras(bundle);
         startActivity(intent);
     }

@@ -153,4 +153,53 @@ public class MySQLiteAdapter {
         closeDB();
         return list;
     }
+
+    /**
+     * 插入学生报名信息
+     * @param uid
+     * @param aid
+     * @return
+     */
+    public boolean insertSign(String uid , String aid){
+        boolean result = false;
+        openDB();
+        String sql = "insert into joinTo values(?,?)";
+        try {
+            database.execSQL(sql,new Object[]{uid,aid});
+            result = true;
+        }catch (Exception e){
+            result = false;
+        }
+        closeDB();
+        return result;
+    }
+
+    /**
+     * 查询学生报名状况
+     * @param uid
+     * @param aid
+     * @return
+     */
+    public boolean querySign(String uid , String aid){
+        boolean result = false;
+        openDB();
+        String sql = "select * from joinTo where uid = ? and aid = ?";
+        Cursor cursor = database.rawQuery(sql,new String[]{uid,aid});
+        if (cursor.getCount() != 0) {
+            result = true;
+        }
+        closeDB();
+        return result;
+    }
+
+    public boolean deleteSign(String uid , String aid){
+        boolean result = false;
+        openDB();
+        int num = database.delete("joinTo", "uid = ? and aid = ?", new String[]{uid, aid});
+        if (num == 1){
+            result = true;
+        }
+        closeDB();
+        return  result;
+    }
 }
