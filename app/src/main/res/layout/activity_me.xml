@@ -111,4 +111,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btn_me_release"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:paddingBottom="15dp"
+        android:paddingLeft="5dp"
+        android:paddingTop="15dp"
+        android:text="我发布的活动"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_me_sign" />
 </android.support.constraint.ConstraintLayout>
