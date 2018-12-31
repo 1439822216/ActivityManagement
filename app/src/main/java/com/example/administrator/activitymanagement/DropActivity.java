@@ -33,7 +33,7 @@ public class DropActivity extends AppCompatActivity {
         initView();
         tv_edit_top.setText("活动修改");
         btn_edit_Release.setText("修改");
-        Intent intent = getIntent();
+        final Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
         final ActivityListBean activityListBean = (ActivityListBean) bundle.getSerializable("dropActivity");
         me = (UserInfo) bundle.getSerializable("me");
@@ -64,6 +64,8 @@ public class DropActivity extends AppCompatActivity {
                     bundle.putSerializable("me",me);
                     intent.putExtras(bundle);
                     startActivity(intent);*/
+                    Intent intent1 = new Intent();
+                    setResult(2,intent1);
                     finish();
                 }
             }

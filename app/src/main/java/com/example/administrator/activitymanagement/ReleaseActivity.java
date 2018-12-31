@@ -2,9 +2,12 @@ package com.example.administrator.activitymanagement;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.view.ActionMode;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -52,7 +55,7 @@ public class ReleaseActivity extends AppCompatActivity {
                     bundle.putSerializable("dropActivity",activityListBean);
                     bundle.putSerializable("me",me);
                     intent.putExtras(bundle);
-                    startActivity(intent);
+                    startActivityForResult(intent,1);
                     break;
                 case R.id.btn_drop_delete:
                     //Toast.makeText(ReleaseActivity.this, "你点击了删除按钮", Toast.LENGTH_SHORT).show();
@@ -109,5 +112,15 @@ public class ReleaseActivity extends AppCompatActivity {
             }
         });
         builder.create().show();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1){
+            if (resultCode == 2){
+
+            }
+        }
     }
 }
