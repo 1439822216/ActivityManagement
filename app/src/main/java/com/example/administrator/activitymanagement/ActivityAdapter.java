@@ -103,5 +103,9 @@ public class ActivityAdapter extends RecyclerView.Adapter<ActivityAdapter.MyView
             }
         }
     }
-
+    public void removeList(int position){
+        list.remove(position);
+        notifyItemRemoved(position);
+        notifyDataSetChanged();
+    }
 }

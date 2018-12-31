@@ -303,4 +303,51 @@ public class MySQLiteAdapter {
         closeDB();
         return  num;
     }
+
+    /**
+     * 根据aid删除活动表和中间表的活动
+     * @param aid
+     * @return
+     */
+    public boolean deleteActivityAndJoin(String aid){
+        boolean result = false;
+        openDB();
+        database.beginTransaction();
+        try {
+            String sql = "delete from activity  where aid = ?";
+            String sql1 = "delete from joinTo where aid = ?";
+            database.execSQL(sql,new Object[]{aid});
+            database.execSQL(sql1,new Object[]{aid});
+            database.setTransactionSuccessful();
+            result = true;
+        }catch (Exception e){
+            result = false;
+        }finally {
+            database.endTransaction();
+        }
+        closeDB();
+        return result;
+    }
+
+    /**
+     * 根据活动aid修改活动信息
+     * @param activityListBean
+     * @return
+     */
+    public boolean updateActivity(ActivityListBean activityListBean){
+        boolean result = false;
+        openDB();
+        ContentValues values = new ContentValues();
+        values.put("aName",activityListBean.getaName());
+        values.put("aOpenTime",activityListBean.getaOpenTime());
+        values.put("aEndTime",activityListBean.getaEndTime());
+        values.put("aPlace",activityListBean.getaPlace());
+        values.put("aInfo",activityListBean.getaInfo());
+        int activity = database.update("activity", values, "aid = ?", new String[]{activityListBean.getAid()});
+        if (activity == 1){
+            result = true;
+        }
+        closeDB();
+        return result;
+    }
 }

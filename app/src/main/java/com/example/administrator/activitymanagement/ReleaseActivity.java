@@ -1,6 +1,8 @@
 package com.example.administrator.activitymanagement;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -14,10 +16,12 @@ import com.example.administrator.activitymanagement.domain.UserInfo;
 import java.util.List;
 
 public class ReleaseActivity extends AppCompatActivity {
-    RecyclerView rv_release_item;
-    List<ActivityListBean> listBeans;
-    UserInfo me;
-    MySQLiteAdapter mySQLiteAdapter;
+    public  RecyclerView rv_release_item;
+    public  List<ActivityListBean> listBeans;
+    public  UserInfo me;
+    public  MySQLiteAdapter mySQLiteAdapter;
+    private AlertDialog.Builder builder;
+    public  ActivityAdapter activityAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,7 +35,7 @@ public class ReleaseActivity extends AppCompatActivity {
         //查询所有自己发布的活动
         mySQLiteAdapter = new MySQLiteAdapter(getApplicationContext());
         listBeans = mySQLiteAdapter.queryActivityByUser(me.getUid());
-        ActivityAdapter activityAdapter = new ActivityAdapter(listBeans,this);
+        activityAdapter = new ActivityAdapter(listBeans,this);
         rv_release_item.setAdapter(activityAdapter);
         activityAdapter.setOnItemClickListener(myItemClickListener);
 
@@ -39,12 +43,20 @@ public class ReleaseActivity extends AppCompatActivity {
     private ActivityAdapter.OnItemClickListener myItemClickListener = new ActivityAdapter.OnItemClickListener() {
         @Override
         public void onItemClick(View v, ActivityAdapter.ViewName viewName, int position) {
+            ActivityListBean activityListBean = listBeans.get(position);
             switch (v.getId()){
                 case R.id.btn_drop_update:
                     //Toast.makeText(ReleaseActivity.this, "你点击了修改按钮", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(v.getContext(),DropActivity.class);
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("dropActivity",activityListBean);
+                    bundle.putSerializable("me",me);
+                    intent.putExtras(bundle);
+                    startActivity(intent);
                     break;
                 case R.id.btn_drop_delete:
                     //Toast.makeText(ReleaseActivity.this, "你点击了删除按钮", Toast.LENGTH_SHORT).show();
+                    showDialog(position,activityListBean);
                     break;
                     default:
                         //Toast.makeText(ReleaseActivity.this, "你点击了item", Toast.LENGTH_SHORT).show();
@@ -74,5 +86,28 @@ public class ReleaseActivity extends AppCompatActivity {
         bundle.putSerializable("user",user);
         intent.putExtras(bundle);
         startActivity(intent);
+    }
+    //设置删除按钮的对话框
+    public void  showDialog(final int position, final ActivityListBean activityListBean){
+        builder = new AlertDialog.Builder(this).setTitle("删除").setMessage("请确认是否删除").setPositiveButton("确认",new DialogInterface.OnClickListener(){
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                boolean b = mySQLiteAdapter.deleteActivityAndJoin(activityListBean.getAid());
+                if (b == true){
+                    Toast.makeText(ReleaseActivity.this, "活动删除成功", Toast.LENGTH_SHORT).show();
+                    activityAdapter.removeList(position);
+                    dialog.dismiss();
+                }else {
+                    Toast.makeText(ReleaseActivity.this, "删除失败", Toast.LENGTH_SHORT).show();
+                    dialog.dismiss();
+                }
+            }
+        }).setNegativeButton("取消", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        builder.create().show();
     }
 }
