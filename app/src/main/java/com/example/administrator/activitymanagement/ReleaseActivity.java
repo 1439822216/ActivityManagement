@@ -119,7 +119,9 @@ public class ReleaseActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 1){
             if (resultCode == 2){
-
+                listBeans = mySQLiteAdapter.queryActivityByUser(me.getUid());
+                activityAdapter = new ActivityAdapter(listBeans,this);
+                rv_release_item.swapAdapter(activityAdapter,false);
             }
         }
     }
