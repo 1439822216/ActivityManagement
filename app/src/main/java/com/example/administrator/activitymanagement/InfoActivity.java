@@ -83,8 +83,15 @@ public class InfoActivity extends AppCompatActivity {
         tv_info_user.setText("发起人：" + activityListBean.getaUsername());
         tv_info_telephone.setText("电话：" + activityListBean.getaTelephone());
         tv_info_info.setText(activityListBean.getaInfo());
-        //设置报名的点击事件
 
+        int myActivity = intent.getIntExtra("myActivity", 0);
+        if (myActivity == 1){
+            int number = intent.getIntExtra("number", 0);
+            btn_info_sign.setText("已报名" + number + "人");
+            btn_info_sign.setEnabled(false);
+        }
+
+        //设置报名的点击事件
         btn_info_sign.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

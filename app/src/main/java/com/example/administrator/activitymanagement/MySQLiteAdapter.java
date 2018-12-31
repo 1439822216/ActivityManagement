@@ -289,4 +289,18 @@ public class MySQLiteAdapter {
         closeDB();
         return listBeans;
     }
+
+    /**
+     * 查询活动的报名人数
+     * @param aid
+     * @return
+     */
+    public int queryActivityByUserToNum(String aid){
+        int num = 0;
+        openDB();
+        Cursor cursorNum = database.query("joinTo", null, "aid = ?", new String[]{aid}, null, null, null);
+        num = cursorNum.getCount();
+        closeDB();
+        return  num;
+    }
 }

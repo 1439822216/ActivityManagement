@@ -17,7 +17,7 @@ import com.example.administrator.activitymanagement.domain.UserInfo;
 public class MeActivity extends Fragment {
 TextView tv_me_name,tv_me_class,tv_me_phone,tv_me_End;
 ImageView im_me_image;
-Button btn_me_sign;
+Button btn_me_sign,btn_me_release;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
@@ -53,6 +53,16 @@ Button btn_me_sign;
                startActivity(intent);
            }
        });
+        btn_me_release.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(),ReleaseActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("me",user);
+                intent.putExtras(bundle);
+                startActivity(intent);
+            }
+        });
     }
 
     private void initView() {
@@ -62,5 +72,6 @@ Button btn_me_sign;
         tv_me_End=getActivity().findViewById(R.id.tv_me_End);
         im_me_image=getActivity().findViewById(R.id.im_me_image);
         btn_me_sign = getActivity().findViewById(R.id.btn_me_sign);
+        btn_me_release = getActivity().findViewById(R.id.btn_me_release);
     }
 }
