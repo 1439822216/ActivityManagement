@@ -1,5 +1,6 @@
 package com.example.administrator.activitymanagement;
 
+import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -58,11 +59,12 @@ public class DropActivity extends AppCompatActivity {
                 boolean b = mySQLiteAdapter.updateActivity(activityListBean);
                 if (b == true){
                     Toast.makeText(DropActivity.this, "修改成功", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(getApplicationContext(),ReleaseActivity.class);
+                    /*Intent intent = new Intent(getApplicationContext(),ReleaseActivity.class);
                     Bundle bundle = new Bundle();
                     bundle.putSerializable("me",me);
                     intent.putExtras(bundle);
-                    startActivity(intent);
+                    startActivity(intent);*/
+                    finish();
                 }
             }
         });
