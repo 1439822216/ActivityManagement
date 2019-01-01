@@ -54,6 +54,7 @@ public class MySQLiteAdapter {
             info.setUsername(cursor.getString(5));
             info.setPassword(cursor.getString(6));
         }
+        cursor.close();
         closeDB();
         return info;
     }
@@ -80,6 +81,7 @@ public class MySQLiteAdapter {
             activityListBean.setaTelephone(activity.getString(9));
             listBeans.add(activityListBean);
         }
+        activity.close();
         closeDB();
         return listBeans;
     }
@@ -155,6 +157,7 @@ public class MySQLiteAdapter {
             activityListBean.setaTelephone(cursor.getString(9));
             list.add(activityListBean);
         }
+        cursor.close();
         closeDB();
         return list;
     }
@@ -193,6 +196,7 @@ public class MySQLiteAdapter {
         if (cursor.getCount() != 0) {
             result = true;
         }
+        cursor.close();
         closeDB();
         return result;
     }
@@ -238,6 +242,7 @@ public class MySQLiteAdapter {
             activityListBean.setaTelephone(activity.getString(9));
             listBeans.add(activityListBean);
         }
+        activity.close();
         closeDB();
         return listBeans;
     }
@@ -257,6 +262,7 @@ public class MySQLiteAdapter {
             userSignBean.setAid(joinTo.getString(1));
             list.add(userSignBean);
         }
+        joinTo.close();
         closeDB();
         return list;
     }
@@ -285,6 +291,7 @@ public class MySQLiteAdapter {
                 activityListBean.setaTelephone(activity.getString(9));
                 listBeans.add(activityListBean);
              }
+             activity.close();
         }
         closeDB();
         return listBeans;
@@ -300,6 +307,7 @@ public class MySQLiteAdapter {
         openDB();
         Cursor cursorNum = database.query("joinTo", null, "aid = ?", new String[]{aid}, null, null, null);
         num = cursorNum.getCount();
+        cursorNum.close();
         closeDB();
         return  num;
     }
