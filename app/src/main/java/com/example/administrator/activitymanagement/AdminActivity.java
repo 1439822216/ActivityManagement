@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
@@ -19,6 +20,7 @@ import java.util.List;
 
 public class AdminActivity extends AppCompatActivity {
     MySQLiteAdapter mySQLiteAdapter;
+    Button btn_admin_exit;
     RecyclerView rv_admin_item;
     private AlertDialog.Builder builder;
     ActivityAdapter activityAdapter;
@@ -27,6 +29,7 @@ public class AdminActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin);
         rv_admin_item = findViewById(R.id.rv_admin_item);
+        btn_admin_exit = findViewById(R.id.btn_admin_exit);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
         rv_admin_item.setLayoutManager(linearLayoutManager);
         mySQLiteAdapter = new MySQLiteAdapter(getApplicationContext());
@@ -61,6 +64,13 @@ public class AdminActivity extends AppCompatActivity {
             @Override
             public void onItemLongClick(View v) {
 
+            }
+        });
+        //退出的点击事件
+        btn_admin_exit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showExitDialog();
             }
         });
     }
@@ -104,6 +114,23 @@ public class AdminActivity extends AppCompatActivity {
         });
         builder.create().show();
     }
+    //显示退出按钮的对话框
+    public void showExitDialog(){
+        builder = new AlertDialog.Builder(this).setTitle("退出").setMessage("是否退出").setPositiveButton("确认", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Intent intent = new Intent(getApplicationContext(),LoginActivity.class);
+                startActivity(intent);
+                dialog.dismiss();
+            }
+        }).setNegativeButton("取消", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        builder.create().show();
+    }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -115,4 +142,5 @@ public class AdminActivity extends AppCompatActivity {
             }
         }
     }
+
 }
