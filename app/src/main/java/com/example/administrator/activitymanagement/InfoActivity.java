@@ -48,17 +48,25 @@ public class InfoActivity extends AppCompatActivity {
             btn_info_sign.setBackgroundColor(Color.parseColor("#ffff8800"));
             btn_info_sign.setEnabled(false);
         }else {
-            String uid = user.getUid();
-            String aid = activityListBean.getAid();
-            MySQLiteAdapter mySQLiteAdapter = new MySQLiteAdapter(getApplicationContext());
-            boolean b = mySQLiteAdapter.querySign(uid, aid);
-            if (b == true){
-                btn_info_sign.setText("取消报名");
-                btn_info_sign.setBackgroundColor(Color.parseColor("#ffff4444"));
-                btn_info_sign.setTag("1");
+            int myActivity = intent.getIntExtra("myActivity", 0);
+            if (myActivity == 1){
+                int number = intent.getIntExtra("number", 0);
+                btn_info_sign.setText("已报名" + number + "人");
+                btn_info_sign.setEnabled(false);
             }else {
-                tv_info_status.setText("报名中");
+                String uid = user.getUid();
+                String aid = activityListBean.getAid();
+                MySQLiteAdapter mySQLiteAdapter = new MySQLiteAdapter(getApplicationContext());
+                boolean b = mySQLiteAdapter.querySign(uid, aid);
+                if (b == true){
+                    btn_info_sign.setText("取消报名");
+                    btn_info_sign.setBackgroundColor(Color.parseColor("#ffff4444"));
+                    btn_info_sign.setTag("1");
+                }else {
+                    tv_info_status.setText("报名中");
+                }
             }
+
         }
 
 

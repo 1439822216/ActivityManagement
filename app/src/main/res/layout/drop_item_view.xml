@@ -75,18 +75,22 @@
             android:layout_alignParentBottom="true"
             android:orientation="horizontal"
             android:layout_height="wrap_content">
+
             <Button
                 android:id="@+id/btn_drop_update"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-               android:layout_weight="1"
-                android:text="修改"/>
+                android:layout_weight="1"
+                android:background="@android:color/holo_orange_light"
+                android:text="修改" />
+
             <Button
                 android:id="@+id/btn_drop_delete"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="删除"/>
+                android:background="@android:color/holo_red_light"
+                android:text="删除" />
 
         </LinearLayout>
     </RelativeLayout>

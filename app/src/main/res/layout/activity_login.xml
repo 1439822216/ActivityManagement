@@ -92,4 +92,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_login_login"
         app:layout_constraintVertical_bias="0.100000024" />
+
+    <CheckBox
+        android:id="@+id/cb_login_Admin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="管理员"
+        android:textSize="30sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/cb_login_Remember"
+        app:layout_constraintStart_toEndOf="@+id/cb_login_Remember" />
 </android.support.constraint.ConstraintLayout>

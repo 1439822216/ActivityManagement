@@ -24,7 +24,8 @@
         <activity android:name=".InfoActivity" />
         <activity android:name=".MeInfoActivity" />
         <activity android:name=".ReleaseActivity" />
-        <activity android:name=".DropActivity"></activity>
+        <activity android:name=".DropActivity" />
+        <activity android:name=".AdminActivity"></activity>
     </application>
 
 </manifest>

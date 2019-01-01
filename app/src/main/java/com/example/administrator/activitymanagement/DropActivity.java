@@ -25,7 +25,7 @@ public class DropActivity extends AppCompatActivity {
     EditText ed_edit_aName, ed_edit_aOpenTime, ed_edit_aEndTime, ed_edit_aPlace, ed_edit_aInfo;
     Button btn_edit_Release;
     MySQLiteAdapter mySQLiteAdapter;
-    UserInfo me;
+    //UserInfo me;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,7 +36,7 @@ public class DropActivity extends AppCompatActivity {
         final Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
         final ActivityListBean activityListBean = (ActivityListBean) bundle.getSerializable("dropActivity");
-        me = (UserInfo) bundle.getSerializable("me");
+        //me = (UserInfo) bundle.getSerializable("me");
         ed_edit_aName.setText(activityListBean.getaName());
         ed_edit_aOpenTime.setText(activityListBean.getaOpenTime());
         ed_edit_aEndTime.setText(activityListBean.getaEndTime());
@@ -59,11 +59,6 @@ public class DropActivity extends AppCompatActivity {
                 boolean b = mySQLiteAdapter.updateActivity(activityListBean);
                 if (b == true){
                     Toast.makeText(DropActivity.this, "修改成功", Toast.LENGTH_SHORT).show();
-                    /*Intent intent = new Intent(getApplicationContext(),ReleaseActivity.class);
-                    Bundle bundle = new Bundle();
-                    bundle.putSerializable("me",me);
-                    intent.putExtras(bundle);
-                    startActivity(intent);*/
                     Intent intent1 = new Intent();
                     setResult(2,intent1);
                     finish();
