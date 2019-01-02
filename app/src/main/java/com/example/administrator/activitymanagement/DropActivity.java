@@ -121,7 +121,7 @@ public class DropActivity extends AppCompatActivity {
 
             @Override
             public  void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth){
-                ed_edit_aOpenTime.setText(year + "-" + monthOfYear + "-" + dayOfMonth);
+                ed_edit_aOpenTime.setText(year + "-" + monthOfYear + 1 +  "-" + dayOfMonth);
             }
         }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
         datePickerDialog.show();
@@ -132,7 +132,7 @@ public class DropActivity extends AppCompatActivity {
 
             @Override
             public  void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth){
-                ed_edit_aEndTime.setText(year + "-" + monthOfYear + "-" + dayOfMonth);
+                ed_edit_aEndTime.setText(year + "-" + monthOfYear + 1 + "-" + dayOfMonth);
             }
         }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
         datePickerDialog.show();

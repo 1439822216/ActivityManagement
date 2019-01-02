@@ -124,7 +124,7 @@ public class EditActivity extends Fragment {
 
             @Override
             public  void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth){
-                EditActivity.this.ed_edit_aOpenTime.setText(year + "-" + monthOfYear + "-" + dayOfMonth);
+                EditActivity.this.ed_edit_aOpenTime.setText(year + "-" + monthOfYear + 1 + "-" + dayOfMonth);
             }
         }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
         datePickerDialog.show();
@@ -135,7 +135,7 @@ public class EditActivity extends Fragment {
 
             @Override
             public  void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth){
-                EditActivity.this.ed_edit_aEndTime.setText(year + "-" + monthOfYear + "-" + dayOfMonth);
+                EditActivity.this.ed_edit_aEndTime.setText(year + "-" + monthOfYear  + 1 + "-" + dayOfMonth);
             }
         }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
         datePickerDialog.show();
