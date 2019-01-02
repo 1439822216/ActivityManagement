@@ -2,8 +2,8 @@ package com.example.administrator.activitymanagement;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -13,7 +13,6 @@ import android.widget.Toast;
 import com.example.administrator.activitymanagement.domain.UserInfo;
 
 import java.io.Serializable;
-import java.util.List;
 
 public class LoginActivity extends AppCompatActivity {
 EditText ed_login_name,ed_login_password;
@@ -32,6 +31,17 @@ Button btn_login_login,btn_login_register;
             cb_login_Remember.setChecked(ischeck);
             ed_login_name.setText(usernmae);
             ed_login_password.setText(password);
+            //注册后跳转到这个页面，账号密码显示上去
+            /*Intent intent=getIntent();
+           String Ruse=intent.getStringExtra("Ruser");
+        String Rpass =intent.getStringExtra("Rpass");
+        if(Ruse.equals("") && Rpass.equals("")){
+
+        }else{
+            ed_login_name.setText(Ruse);
+            ed_login_password.setText(Rpass);
+        }*/
+
         btn_login_register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

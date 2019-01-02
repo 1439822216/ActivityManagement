@@ -1,9 +1,8 @@
 package com.example.administrator.activitymanagement;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.InputType;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -43,6 +42,8 @@ Button btn_reg_register;
                         boolean result = adapter.insertUser(info);
                         if (result == true) {
                             Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                            /*intent.putExtra("Ruser",username);
+                            intent.putExtra("Rpass",password);*/
                             startActivity(intent);
                         } else {
                             Toast.makeText(RegisterActivity.this, "注册失败", Toast.LENGTH_SHORT).show();
